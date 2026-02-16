@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM SHRI Jawahar Navodaya Vidyalaya, Hailakandi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --primary-navy: #191970;
+            --secondary-green: #228B22;
+            --accent-red: #B22222;
+            --bg-canvas: #F9F7F3;
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- 2. RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-canvas);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-navy);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-green {
+            background-color: var(--secondary-green);
+            color: var(--text-light);
+        }
+        .btn-green:hover {
+            background-color: #1a6b1a;
+            transform: translateY(-2px);
+        }
+
+        .btn-red {
+            background-color: var(--accent-red);
+            color: var(--text-light);
+        }
+        .btn-red:hover {
+            background-color: #8f1b1b;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-navy);
+        }
+
+        /* --- 3. HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nvs-logo {
+            height: 55px;
+            width: auto;
+            background-color: #fff;
+            border-radius: 50%; 
+            padding: 2px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nvs-logo:hover {
+            transform: scale(1.15); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h2 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--secondary-green);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(25, 25, 112, 0.7), rgba(25, 25, 112, 0.7)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            height: 80vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* --- 5. MARQUEE / NEWS TICKER --- */
+        .news-ticker {
+            background-color: var(--accent-red);
+            color: var(--text-light);
+            padding: 10px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-title {
+            background-color: #8f1b1b;
+            padding: 10px 20px;
+            font-weight: 600;
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            animation: ticker 25s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* --- 6. PRINCIPAL's DESK --- */
+        .principal-desk {
+            padding: 80px 0;
+        }
+
+        .principal-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .principal-img {
+            width: 100%;
+            height: 350px;
+            background-color: #ddd;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 4px solid var(--primary-navy);
+        }
+
+        .principal-text h2 {
+            margin-bottom: 15px;
+        }
+
+        .principal-text h4 {
+            color: var(--secondary-green);
+            margin-bottom: 20px;
+        }
+
+        /* --- 7. STATS GRID --- */
+        .stats-section {
+            background-color: var(--primary-navy);
+            padding: 60px 0;
+            color: var(--text-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            border-radius: 10px;
+            border-bottom: 4px solid var(--secondary-green);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .stat-card h3 {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- 8. QUICK LINKS & GALLERY --- */
+        .quick-links-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-navy);
+            transition: var(--transition);
+        }
+
+        .link-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .link-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* --- 9. CONTACT SECTION (NEW) --- */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .contact-form-container {
+            background: var(--bg-canvas);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary-green);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-navy);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #fff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-green);
+            box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 12px;
+        }
+
+        /* --- 10. FOOTER --- */
+        footer {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-green);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* --- 11. BACK TO TOP BUTTON --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-red);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #8f1b1b;
+            transform: translateY(-3px);
+        }
+
+        /* --- 12. RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 900px) {
+            .principal-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: nowrap;
+            }
+            
+            .logo-text h2 {
+                font-size: 1rem;
+            }
+            .logo-text p {
+                display: none;
+            }
+            .nvs-logo {
+                height: 45px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .jnvst-btn {
+                display: none;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: #0f0f4a;
+                padding-top: 80px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                z-index: 1000;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
+                display: block;
+            }
+
+            .menu-toggle.is-active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.is-active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.is-active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .ticker-title {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <header>
+        <div class="container header-content">
+            <a href="#home" class="logo-area">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Jawahar_Navodaya_Vidyalaya_logo.png/220px-Jawahar_Navodaya_Vidyalaya_logo.png" alt="JNV Logo" class="nvs-logo">
+                <div class="logo-text">
+                    <h2>PM SHRI JNV Hailakandi</h2>
+                    <p>Est. 1997 | CBSE Affiliation No: 240018</p>
+                </div>
+            </a>
+            
+            <div class="nav-wrapper">
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#admission">Admission</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#jnvst" class="btn btn-red jnvst-btn">JNVST 2026</a>
+                
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="news-ticker">
+        <div class="ticker-title">URGENT</div>
+        <div class="ticker-content">
+            🚨 Class VI JNVST 2026 Admit Cards Released! Download from Navodaya Portal. | 📅 Final Term Examinations start next Monday. | 🏆 Congratulations to the Regional Sports Meet Winners!
+        </div>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Empowering Rural Talent with Free, Quality Education</h1>
+            <p>Your future begins here at JNV Hailakandi. Fostering excellence, tradition, and innovation under the PM SHRI initiative.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-outline">Learn More</a>
+                <a href="#admission" class="btn btn-green">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="principal-desk" id="about">
+        <div class="container">
+            <div class="principal-grid">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Principal JNV Hailakandi" class="principal-img">
+                <div class="principal-text">
+                    <h2>From the Principal's Desk</h2>
+                    <h4>Mr. Manoj Kumar Singh</h4>
+                    <p>Welcome to PM SHRI Jawahar Navodaya Vidyalaya, Hailakandi. Our mission is to provide modern education deeply rooted in traditional values. As a 'Green School', we are committed to sustainable practices while nurturing the brightest rural minds of Assam.</p>
+                    <br>
+                    <p>Through comprehensive academics, sports, and cultural integration, we shape students into responsible, global citizens ready to face tomorrow's challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>33</h3>
+                    <p>Acres Green Campus</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Pass Rate</p>
+                </div>
+                <div class="stat-card">
+                    <h3>1997</h3>
+                    <p>Year Established</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-links-section" id="academics">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore More</h2>
+            </div>
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>📅 Academic Calendar</h3>
+                    <p>View the schedule for exams, holidays, and school events.</p>
+                </div>
+                <div class="link-card">
+                    <h3>📜 Mandatory Disclosure</h3>
+                    <p>Official CBSE compliance and structural documentation.</p>
+                </div>
+                <div class="link-card">
+                    <h3>🤝 Alumni Network</h3>
+                    <p>Connect with past students and join the global JNV family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions about admissions, academics, or campus life? Fill out the form, and our administration will get back to you within 24-48 working hours.</p>
+                    
+                    <h4 style="margin-bottom: 5px; color: var(--primary-navy);">Campus Address</h4>
+                    <p style="margin-bottom: 20px;">Village Monacherra, District Hailakandi,<br>Assam - 788164</p>
+                    
+                    <h4 style="margin-bottom: 5px; color: var(--primary-navy);">Direct Contact</h4>
+                    <p>📞 03844-286629<br>✉️ jnvhailakandi@rediffmail.com</p>
+                </div>
+
+                <div class="contact-form-container">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="e.g. Admission Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" class="form-control" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-green submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Location</h3>
+                    <p><strong>PM SHRI JNV Hailakandi</strong></p>
+                    <p>Village Monacherra,</p>
+                    <p>District Hailakandi,</p>
+                    <p>Assam - 788164</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Navodaya Vidyalaya Samiti</a></li>
+                        <li><a href="#">CBSE Official Portal</a></li>
+                        <li><a href="#">NCERT Guidelines</a></li>
+                        <li><a href="#">PM SHRI Schools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>📞 03844-286629</p>
+                    <p>✉️ jnvhailakandi@rediffmail.com</p>
+                    <p>🕒 Mon - Sat: 9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PM SHRI Jawahar Navodaya Vidyalaya, Hailakandi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        };
+
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('#nav-menu li a');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
